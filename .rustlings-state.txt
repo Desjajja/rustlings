@@ -1,6 +1,6 @@
 DON'T EDIT THIS FILE!
 
-as_ref_mut
+hashmaps2
 
 intro1
 intro2
@@ -46,7 +46,6 @@ modules1
 modules2
 modules3
 hashmaps1
-hashmaps2
 hashmaps3
 quiz2
 options1

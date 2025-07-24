@@ -1,5 +1,3 @@
-use std::i64;
-
 #[derive(Debug, PartialEq, Eq)]
 enum DivisionError {
     // Example: 42 / 0
@@ -40,8 +38,7 @@ fn result_with_list() -> Result<Vec<i64>, ()> {
 // Desired output: `[Ok(1), Ok(11), Ok(1426), Ok(3)]`
 fn list_of_results() -> Vec<Result<i64, DivisionError>> {
     let numbers = [27, 297, 38502, 81];
-    let division_results = numbers.into_iter().map(|n| divide(n, 27)).collect();
-    division_results
+    numbers.into_iter().map(|n| divide(n, 27)).collect()
 }
 
 fn main() {
