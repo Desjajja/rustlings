@@ -3,7 +3,6 @@
 // shared value: `JobStatus.jobs_done`
 
 use std::{
-    os::macos::raw::stat,
     sync::{Arc, Mutex},
     thread,
     time::Duration,
