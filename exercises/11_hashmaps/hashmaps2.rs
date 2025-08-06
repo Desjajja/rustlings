@@ -50,7 +50,9 @@ mod tests {
     // Don't modify this function!
     fn get_fruit_basket() -> HashMap<Fruit, u32> {
         let content = [(Fruit::Apple, 4), (Fruit::Mango, 2), (Fruit::Lychee, 5)];
-        HashMap::from_iter(content)
+        // HashMap::from_iter(content)
+        let map: HashMap<_, _> = content.into_iter().collect();
+        map
     }
 
     #[test]

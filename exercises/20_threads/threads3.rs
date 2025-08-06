@@ -1,5 +1,6 @@
 use std::{sync::mpsc, thread, time::Duration};
 
+#[derive(Clone)]
 struct Queue {
     first_half: Vec<u32>,
     second_half: Vec<u32>,
@@ -20,10 +21,12 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) {
     // let tx_shared = Arc::new(Mutex::new(tx));
     // let tx1 = tx_shared.clone();
     // let tx2 = tx_shared.clone();
+    let q1 = q.clone();
+    let q2 = q;
     let tx1 = tx.clone();
     let tx2 = tx.clone();
     thread::spawn(move || {
-        for val in q.first_half {
+        for val in q1.first_half {
             println!("Sending {val:?}");
             // tx1.lock().unwrap().send(val).unwrap();
             tx1.send(val).unwrap();
@@ -32,7 +35,7 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) {
     });
 
     thread::spawn(move || {
-        for val in q.second_half {
+        for val in q2.second_half {
             println!("Sending {val:?}");
             // tx2.lock().unwrap().send(val).unwrap();
             tx2.send(val).unwrap();
